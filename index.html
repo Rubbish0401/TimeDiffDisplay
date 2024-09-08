@@ -155,7 +155,7 @@
 				let ref = loadRefPoint();
 				ref_point = ref == null ? new Date() : new Date(ref);
 				if(ref == null){
-					saveRefPoint(ref);	
+					saveRefPoint(ref_point);
 				}
 				
 				inteval = setInterval(syncTheTime, 500);
