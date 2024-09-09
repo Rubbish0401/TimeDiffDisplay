@@ -77,6 +77,41 @@ function toggleShowingDays() {
 }
 
 (function () {
+	let titleAnchor = document.getElementById("anchor-title");
+	titleAnchor.addEventListener("click", function(event){
+		location.reload(ture);
+	});
+
+	let screenshotBtn = document.getElementById("btn-screenshot");
+	screenshotBtn.addEventListener("click", function(event){
+		html2canvas(document.body,	{
+			windowWidth: 1920,
+			windowHeight: 1080
+		}).then(canvas => {
+			let now = new Date();
+
+			let anchor = document.createElement("a");
+			anchor.href = canvas.toDataURL("image/png");
+			anchor.download = `screenshot_${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}.png`;
+			anchor.click();
+		});
+	})
+
+	let screenshotBtn2 = document.getElementById("btn-screenshot2");
+	screenshotBtn2.addEventListener("click", function(event){
+		html2canvas(document.body,	{
+			windowWidth: 1080,
+			windowHeight: 1920
+		}).then(canvas => {
+			let now = new Date();
+
+			let anchor = document.createElement("a");
+			anchor.href = canvas.toDataURL("image/png");
+			anchor.download = `screenshot_${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}.png`;
+			anchor.click();
+		});
+	})
+
 	document.getElementById(ID_TITLEBAR).innerText = document.title;
 	initialiseTimer();
 })();

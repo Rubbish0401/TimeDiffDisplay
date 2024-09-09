@@ -29,6 +29,26 @@ a {
 	background: #E0A0A0;
 }
 
+#anchor-title{
+	width: max-content;
+	
+	user-select: none;
+}
+
+#control-btns{
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: flex-start;
+}
+
+#control-btns > *{
+	width: fit-content;
+	height: 100%;
+}
+
 #title {
 	width: auto;
 	height: fit-content;
