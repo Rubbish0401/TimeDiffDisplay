@@ -8,6 +8,7 @@ body {
 	padding: 0;
 
 	overflow: hidden;
+	background: #FFFFFF;
 }
 
 a {
@@ -31,7 +32,7 @@ a {
 
 #anchor-title{
 	width: max-content;
-	
+
 	user-select: none;
 }
 

@@ -17,6 +17,9 @@ var ref_point;
 var interval;
 var show_days = false;
 
+var expansionBtn;
+var shrinkBtn;
+
 function fillChars(text = "", length = 0, char = "0", direction = 0) {
 	text = text.toString();
 
@@ -76,11 +79,37 @@ function toggleShowingDays() {
 	show_days = !show_days;
 }
 
-(function () {
+(function(){
 	let titleAnchor = document.getElementById("anchor-title");
 	titleAnchor.addEventListener("click", function(event){
 		location.reload(true);
 	});
+
+	expansionBtn = document.getElementById("btn-expansion");
+	expansionBtn.addEventListener("click", function(){
+		document.documentElement.requestFullscreen({navigationUI: "show"})
+		.then(() => {})
+		.catch(err => {
+			console.log(err);
+		});
+
+		expansionBtn.style.display = "none";
+		shrinkBtn.style.display = "initial";
+	});
+
+	shrinkBtn = document.getElementById("btn-shrink");
+	shrinkBtn.addEventListener("click", function(event){
+		document.exitFullscreen();
+
+		expansionBtn.style.display = "initial";
+		shrinkBtn.style.display = "none";
+	});
+
+	if(document.fullscreenElement == null){
+		shrinkBtn.style.display = "none";
+	}else{
+		expansionBtn.style.display = "none";
+	}
 
 	let screenshotBtn = document.getElementById("btn-screenshot");
 	screenshotBtn.addEventListener("click", function(event){
