@@ -79,7 +79,7 @@ function toggleShowingDays() {
 (function () {
 	let titleAnchor = document.getElementById("anchor-title");
 	titleAnchor.addEventListener("click", function(event){
-		location.reload(ture);
+		location.reload(true);
 	});
 
 	let screenshotBtn = document.getElementById("btn-screenshot");
