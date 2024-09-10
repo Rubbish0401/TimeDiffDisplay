@@ -24,7 +24,35 @@
 </head>
 
 <body>
-	<div id="control-pane">
+	<div id="pane">
+		<svg id="btn-show" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332" version="1.1"
+			id="svg5" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+			style="position: absolute; top: 0; right: 0; opacity: 50%;">
+			<defs id="defs2" />
+			<g id="layer1" style="display:none">
+				<path id="rect234"
+					style="display:none;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+					d="M 1.0583333,1.0583333 V 7.4083332 H 2.1166666 V 2.1166666 H 7.4083332 V 1.0583333 Z m 8.4666665,0 V 2.1166666 H 14.816666 V 7.4083332 H 15.875 V 1.0583333 Z M 1.0583333,9.5249998 V 15.875 H 7.4083332 V 14.816666 H 2.1166666 V 9.5249998 Z m 13.7583327,0 V 14.816666 H 9.5249998 V 15.875 H 15.875 V 9.5249998 Z" />
+				<path id="path933"
+					style="display:inline;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+					d="M 6.3499999,1.0583333 V 6.3499999 H 1.0583333 V 7.4083332 H 7.4083332 V 1.0583333 Z m 3.1749999,0 V 7.4083332 H 15.875 V 6.3499999 H 10.583333 V 1.0583333 Z M 1.0583333,9.5249998 V 10.583333 H 6.3499999 V 15.875 H 7.4083332 V 9.5249998 Z m 8.4666665,0 V 15.875 H 10.583333 V 10.583333 H 15.875 V 9.5249998 Z" />
+			</g>
+			<g id="layer2" style="display:none">
+				<path id="rect1068"
+					style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+					d="M 1.0583333,1.0583333 V 15.875 H 15.875 V 1.0583333 Z M 8.4666665,3.1749999 A 5.2916665,5.2916665 0 0 1 13.758333,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,13.758333 5.2916665,5.2916665 0 0 1 3.1749999,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,3.1749999 Z m 0,2.1166667 A 3.175,3.175 0 0 0 5.2916666,8.4666665 3.175,3.175 0 0 0 8.4666665,11.641666 3.175,3.175 0 0 0 11.641666,8.4666665 3.175,3.175 0 0 0 8.4666665,5.2916666 Z" />
+			</g>
+			<g id="layer3">
+				<path id="rect349"
+					style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+					d="M 1.806608,4.3883666 1.0583333,5.1366366 8.4666666,12.544966 15.875,5.1366366 15.126725,4.3883666 8.4666667,11.048416 Z" />
+			</g>
+		</svg>
+
+		<span id="display"></span>
+	</div>
+
+	<div id="control-pane" class="show">
 		<div style="display: flex;">
 			<a id="anchor-title">
 				<span id="title"></span>
@@ -32,8 +60,8 @@
 		</div>
 
 		<div id="control-btns">
-			<svg id="btn-expansion" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332"
-				version="1.1" id="svg5" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+			<svg id="btn-expansion" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332" version="1.1"
+				id="svg5" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
 				xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
 				xmlns:svg="http://www.w3.org/2000/svg">
 				<sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25"
@@ -50,9 +78,9 @@
 				</g>
 			</svg>
 
-			<svg id="btn-shrink" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332" version="1.1" id="svg5"
-				inkscape:export-filename="fullscreen_shrink.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96"
-				xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+			<svg id="btn-shrink" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332" version="1.1"
+				id="svg5" inkscape:export-filename="fullscreen_shrink.svg" inkscape:export-xdpi="96"
+				inkscape:export-ydpi="96" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
 				xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
 				xmlns:svg="http://www.w3.org/2000/svg">
 				<sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25"
@@ -116,11 +144,31 @@
 						d="M 1.0583333,1.0583333 V 15.875 H 15.875 V 1.0583333 Z M 8.4666665,3.1749999 A 5.2916665,5.2916665 0 0 1 13.758333,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,13.758333 5.2916665,5.2916665 0 0 1 3.1749999,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,3.1749999 Z m 0,2.1166667 A 3.175,3.175 0 0 0 5.2916666,8.4666665 3.175,3.175 0 0 0 8.4666665,11.641666 3.175,3.175 0 0 0 11.641666,8.4666665 3.175,3.175 0 0 0 8.4666665,5.2916666 Z" />
 				</g>
 			</svg>
-		</div>
-	</div>
 
-	<div id="pane">
-		<span id="display"></span>
+			<svg id="btn-hide" width="63.999996" height="63.999996" viewBox="0 0 16.933332 16.933332" version="1.1"
+				id="svg5" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+				style="transform: rotateX(180deg);">
+				<defs id="defs2" />
+				<g id="layer1" style="display:none">
+					<path id="rect234"
+						style="display:none;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+						d="M 1.0583333,1.0583333 V 7.4083332 H 2.1166666 V 2.1166666 H 7.4083332 V 1.0583333 Z m 8.4666665,0 V 2.1166666 H 14.816666 V 7.4083332 H 15.875 V 1.0583333 Z M 1.0583333,9.5249998 V 15.875 H 7.4083332 V 14.816666 H 2.1166666 V 9.5249998 Z m 13.7583327,0 V 14.816666 H 9.5249998 V 15.875 H 15.875 V 9.5249998 Z" />
+					<path id="path933"
+						style="display:inline;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+						d="M 6.3499999,1.0583333 V 6.3499999 H 1.0583333 V 7.4083332 H 7.4083332 V 1.0583333 Z m 3.1749999,0 V 7.4083332 H 15.875 V 6.3499999 H 10.583333 V 1.0583333 Z M 1.0583333,9.5249998 V 10.583333 H 6.3499999 V 15.875 H 7.4083332 V 9.5249998 Z m 8.4666665,0 V 15.875 H 10.583333 V 10.583333 H 15.875 V 9.5249998 Z" />
+				</g>
+				<g id="layer2" style="display:none">
+					<path id="rect1068"
+						style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+						d="M 1.0583333,1.0583333 V 15.875 H 15.875 V 1.0583333 Z M 8.4666665,3.1749999 A 5.2916665,5.2916665 0 0 1 13.758333,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,13.758333 5.2916665,5.2916665 0 0 1 3.1749999,8.4666665 5.2916665,5.2916665 0 0 1 8.4666665,3.1749999 Z m 0,2.1166667 A 3.175,3.175 0 0 0 5.2916666,8.4666665 3.175,3.175 0 0 0 8.4666665,11.641666 3.175,3.175 0 0 0 11.641666,8.4666665 3.175,3.175 0 0 0 8.4666665,5.2916666 Z" />
+				</g>
+				<g id="layer3">
+					<path id="rect349"
+						style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0;paint-order:stroke fill markers;stop-color:#000000"
+						d="M 1.806608,4.3883666 1.0583333,5.1366366 8.4666666,12.544966 15.875,5.1366366 15.126725,4.3883666 8.4666667,11.048416 Z" />
+				</g>
+			</svg>
+		</div>
 	</div>
 
 	<script src="script/index.js"></script>

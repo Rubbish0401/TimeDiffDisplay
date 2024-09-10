@@ -28,6 +28,16 @@ a {
 	align-items: center;
 
 	background: #E0A0A0;
+
+	transition: top 1s ease-in;
+}
+
+#control-pane.hide{
+	top: -64px;
+}
+
+#control-pane.show{
+	top: 0;
 }
 
 #anchor-title{

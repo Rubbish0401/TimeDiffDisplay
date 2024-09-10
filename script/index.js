@@ -2,8 +2,12 @@ var ref_point;
 var interval;
 var show_days = false;
 
+var controlBar;
+
 var expansionBtn;
 var shrinkBtn;
+var hideBtn;
+var showBtn;
 
 function saveRefPoint(date) {
 	localStorage.setItem(ITEMID_REF, date.toString());
@@ -40,6 +44,8 @@ function toggleShowingDays() {
 }
 
 (function(){
+	controlBar = document.getElementById("control-pane");
+
 	let titleAnchor = document.getElementById("anchor-title");
 	titleAnchor.addEventListener("click", function(event){
 		location.reload(true);
@@ -64,6 +70,19 @@ function toggleShowingDays() {
 	}else{
 		expansionBtn.style.display = "none";
 	}
+
+	showBtn = document.getElementById("btn-show");
+	showBtn.addEventListener("click", function(event){
+		controlBar.classList.add("show");
+		controlBar.classList.remove("hide");
+	});
+
+	hideBtn = document.getElementById("btn-hide");
+	hideBtn.addEventListener("click", function(event){
+		controlBar.classList.add("hide");
+		controlBar.classList.remove("show");
+	});
+	
 
 	document.addEventListener("fullscreenchange", function(event){
 		expansionBtn.style.display = this.fullscreenElement ? "none" : "initial";
