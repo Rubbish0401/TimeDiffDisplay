@@ -115,7 +115,8 @@ function toggleShowingDays() {
 	screenshotBtn.addEventListener("click", function(event){
 		html2canvas(document.body,	{
 			windowWidth: 1920,
-			windowHeight: 1080
+			windowHeight: 1080,
+			scale: 1,
 		}).then(canvas => {
 			alert(`${canvas.width}, ${canvas.height}`);
 
@@ -132,7 +133,8 @@ function toggleShowingDays() {
 	screenshotBtn2.addEventListener("click", function(event){
 		html2canvas(document.body,	{
 			windowWidth: 1080,
-			windowHeight: 1920
+			windowHeight: 1920,
+			scale: 1,
 		}).then(canvas => {
 			alert(`${canvas.width}, ${canvas.height}`);
 
