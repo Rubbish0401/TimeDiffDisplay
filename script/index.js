@@ -113,13 +113,11 @@ function toggleShowingDays() {
 
 	let screenshotBtn = document.getElementById("btn-screenshot");
 	screenshotBtn.addEventListener("click", function(event){
-		html2canvas(document.body,	{
+		html2canvas(document.documentElement, {
 			windowWidth: 1920,
 			windowHeight: 1080,
 			scale: 1,
 		}).then(canvas => {
-			alert(`${canvas.width}, ${canvas.height}`);
-
 			let now = new Date();
 
 			let anchor = document.createElement("a");
@@ -131,13 +129,11 @@ function toggleShowingDays() {
 
 	let screenshotBtn2 = document.getElementById("btn-screenshot2");
 	screenshotBtn2.addEventListener("click", function(event){
-		html2canvas(document.body,	{
+		html2canvas(document.documentElement, {
 			windowWidth: 1080,
 			windowHeight: 1920,
 			scale: 1,
 		}).then(canvas => {
-			alert(`${canvas.width}, ${canvas.height}`);
-
 			let now = new Date();
 
 			let anchor = document.createElement("a");
@@ -147,8 +143,10 @@ function toggleShowingDays() {
 		});
 	})
 
+	document.addEventListener("fullscreenchange", function(event){
+
+	});
+
 	document.getElementById(ID_TITLEBAR).innerText = document.title;
 	initialiseTimer();
-
-	alert(`${window.innerWidth}, ${window.innerHeight}`);
 })();
