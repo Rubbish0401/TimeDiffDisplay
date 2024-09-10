@@ -42,7 +42,7 @@ function initialiseTimer() {
 }
 
 function toggleShowingDays() {
-	show_days = !show_days; b
+	show_days = !show_days;
 }
 
 (function(){
