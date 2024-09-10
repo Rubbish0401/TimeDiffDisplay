@@ -4,6 +4,7 @@ var show_days = false;
 
 var pane;
 var controlBar;
+var fsControlBar;
 
 var expansionBtn;
 var shrinkBtn;
@@ -47,6 +48,19 @@ function toggleShowingDays() {
 (function(){
 	pane = document.getElementById("pane");
 	controlBar = document.getElementById("control-pane");
+	fsControlBar = document.getElementById("fs-control-pane");
+
+	fsControlBar.addEventListener("mouseover", function(event){
+		if(controlBar.classList.contains("hide")){
+			event.target.classList.add("show");
+			event.target.classList.remove("hide");
+		}
+	});
+
+	fsControlBar.addEventListener("mouseout", function(event){
+		event.target.classList.add("hide");
+		event.target.classList.remove("show");
+	});
 
 	let titleAnchor = document.getElementById("anchor-title");
 	titleAnchor.addEventListener("click", function(event){
@@ -84,7 +98,6 @@ function toggleShowingDays() {
 		controlBar.classList.add("hide");
 		controlBar.classList.remove("show");
 	});
-	
 
 	document.addEventListener("fullscreenchange", function(event){
 		expansionBtn.style.display = this.fullscreenElement ? "none" : "initial";

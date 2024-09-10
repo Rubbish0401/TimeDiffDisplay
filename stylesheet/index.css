@@ -117,3 +117,26 @@ a {
 
 	background: #FFFFFF;
 }
+
+#fs-control-pane{
+	width: 100vw;
+	height: 64px;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	transition: opacity 1s ease-in;
+}
+
+#fs-control-pane.hide{
+	opacity: 0;
+}
+
+#fs-control-pane.show{
+	opacity: 1;
+}
+
+#fs-control-pane > *{
+	width: fit-content;
+	height: 100%;
+}
