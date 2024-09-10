@@ -15,6 +15,7 @@
 	<meta charset="utf-8" />
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<script src="script/index-header.js"></script>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" crossorigin="anonymous">
 	<link rel="stylesheet" href="stylesheet/index.css">
@@ -121,6 +122,13 @@
 	<div id="pane">
 		<span id="display"></span>
 	</div>
+
+	<dialog id="dialogue">
+		<div id="panel">
+			<input id="theme-hue" type="range" max="255" min="0" value="0">
+			<span id="hue-display" ></span>
+		</div>
+	</dialog>
 
 	<script src="script/index.js"></script>
 </body>
