@@ -2,6 +2,7 @@ var ref_point;
 var interval;
 var show_days = false;
 
+var pane;
 var controlBar;
 
 var expansionBtn;
@@ -44,6 +45,7 @@ function toggleShowingDays() {
 }
 
 (function(){
+	pane = document.getElementById("pane");
 	controlBar = document.getElementById("control-pane");
 
 	let titleAnchor = document.getElementById("anchor-title");
@@ -91,12 +93,12 @@ function toggleShowingDays() {
 
 	let screenshotBtn = document.getElementById("btn-screenshot");
 	screenshotBtn.addEventListener("click", function(event){
-		takesScreenshot(1920, 1080);
+		takesScreenshot(pane, 1920, 1080);
 	})
 
 	let screenshotBtn2 = document.getElementById("btn-screenshot2");
 	screenshotBtn2.addEventListener("click", function(event){
-		takesScreenshot(1080, 1920);
+		takesScreenshot(pane, 1080, 1920);
 	});
 
 	document.getElementById(ID_TITLEBAR).innerText = document.title;
