@@ -17,11 +17,11 @@ a {
 }
 
 #control-pane {
-	width: calc(100% - 8px);
-	height: 56px;
+	width: calc(100% - 4px);
+	height: 28px;
 	position: fixed;
 
-	padding: 4px;
+	padding: 2px;
 
 	display: flex;
 	flex-direction: row;
@@ -64,7 +64,7 @@ a {
 	width: auto;
 	height: fit-content;
 
-	font-size: 48px;
+	font-size: 24px;
 	font-family: "Open Sans";
 	font-weight: 100;
 	color: #000000;
@@ -120,7 +120,7 @@ a {
 
 #fs-control-pane{
 	width: 100vw;
-	height: 64px;
+	height: 32px;
 	position: fixed;
 	top: 0;
 	left: 0;
