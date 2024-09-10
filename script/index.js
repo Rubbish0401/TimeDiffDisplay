@@ -115,10 +115,10 @@ function toggleShowingDays() {
 	screenshotBtn.addEventListener("click", function(event){
 		html2canvas(document.body,	{
 			windowWidth: 1920,
-			windowHeight: 1080,
-			width: 1920,
-			height: 1080
+			windowHeight: 1080
 		}).then(canvas => {
+			alert(`${canvas.width}, ${canvas.height}`);
+
 			let now = new Date();
 
 			let anchor = document.createElement("a");
@@ -132,10 +132,10 @@ function toggleShowingDays() {
 	screenshotBtn2.addEventListener("click", function(event){
 		html2canvas(document.body,	{
 			windowWidth: 1080,
-			windowHeight: 1920,
-			width: 1080,
-			height: 1920
+			windowHeight: 1920
 		}).then(canvas => {
+			alert(`${canvas.width}, ${canvas.height}`);
+
 			let now = new Date();
 
 			let anchor = document.createElement("a");
@@ -147,4 +147,6 @@ function toggleShowingDays() {
 
 	document.getElementById(ID_TITLEBAR).innerText = document.title;
 	initialiseTimer();
+
+	alert(`${window.innerWidth}, ${window.innerHeight}`);
 })();
