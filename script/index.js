@@ -52,17 +52,11 @@ function toggleShowingDays() {
 		.catch(err => {
 			console.log(err);
 		});
-
-		expansionBtn.style.display = "none";
-		shrinkBtn.style.display = "initial";
 	});
 
 	shrinkBtn = document.getElementById("btn-shrink");
 	shrinkBtn.addEventListener("click", function(event){
 		document.exitFullscreen();
-
-		expansionBtn.style.display = "initial";
-		shrinkBtn.style.display = "none";
 	});
 
 	if(document.fullscreenElement == null){
@@ -70,6 +64,11 @@ function toggleShowingDays() {
 	}else{
 		expansionBtn.style.display = "none";
 	}
+
+	document.addEventListener("fullscreenchange", function(event){
+		expansionBtn.style.display = this.fullscreenElement ? "none" : "initial";
+		shrinkBtn.style.display = this.fullscreenElement ? "initial" : "none";
+	});
 
 	let screenshotBtn = document.getElementById("btn-screenshot");
 	screenshotBtn.addEventListener("click", function(event){
@@ -79,10 +78,6 @@ function toggleShowingDays() {
 	let screenshotBtn2 = document.getElementById("btn-screenshot2");
 	screenshotBtn2.addEventListener("click", function(event){
 		takesScreenshot(1080, 1920);
-	})
-
-	document.addEventListener("fullscreenchange", function(event){
-		
 	});
 
 	document.getElementById(ID_TITLEBAR).innerText = document.title;
