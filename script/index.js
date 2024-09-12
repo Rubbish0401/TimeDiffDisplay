@@ -96,4 +96,9 @@
 	// Initialise
 	applyTheme(themeHue);
 	initialiseTimer();
+
+	// Remove Splash Screen
+	setTimeout(function(){
+		document.getElementById("splash").remove();
+	}, 3000);
 })();
