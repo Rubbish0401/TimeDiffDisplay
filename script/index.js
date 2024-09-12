@@ -33,14 +33,16 @@
 		};
 
 		let touchStart = function(){
-			touchInterval = setInterval(() => {
-				touchingTime++;
+			if(!touchInterval){
+				touchInterval = setInterval(() => {
+					touchingTime++;
 
-				if(touchingTime >= 15){
-					takesScreenshot();
-					touchEnd();
-				}
-			}, 100);
+					if(touchingTime >= 15){
+						takesScreenshot();
+						touchEnd();
+					}
+				}, 100);
+			}
 		};
 
 		display.addEventListener("mousedown", touchStart);
