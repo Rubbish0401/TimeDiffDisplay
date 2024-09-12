@@ -60,16 +60,13 @@ a {
 	justify-content: center;
 	align-items: center;
 
-	opacity: 1;
 	background: #FFFFFF;
 
-	transition: opacity 1s ease-in;
+	animation: fadeout 1s ease-in;
+	animation-delay: 2s;
+	animation-fill-mode: forwards;
 
 	user-select: none;
-}
-
-#splash.hide{
-	opacity: 0;
 }
 
 #splash > div{
@@ -79,13 +76,9 @@ a {
 	display: block;
 	text-align: center;
 
-	opacity: 1;
-
-	transition: opacity 1s ease-in;
-}
-
-#splash > div.hide{
-	opacity: 0;
+	animation: fadeout 1s ease-in;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
 }
 
 #splash-icon{
@@ -102,6 +95,17 @@ a {
 	font-weight: bolder;
 
 	color: #6666ff;
+}
+
+@keyframes fadeout{
+	from{
+		opacity: 1;
+	}
+
+	to{
+		opacity: 0;
+		display: none;
+	}
 }
 
 @media screen and (max-width: 960px) {
