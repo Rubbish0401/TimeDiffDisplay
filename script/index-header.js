@@ -1,68 +1,86 @@
-const Unit = {
-	MILLI_SECOND: 1,
-	SECOND: 1000,
-	MINUTE: 60 * 1000,
-	HOUR: 60 * 60 * 1000,
-	DAY: 24 * 60 * 60 * 1000,
-	WEEK: 7 * 24 * 60 * 60 * 1000,
-	MONTH: 30 * 24 * 60 * 60 * 1000, // 30 days
-	YEAR: 365 * 24 * 60 * 60 * 1000
-};
+const KEY_REF = "referencepoint";
 
-const ITEMID_REF = "referencepoint";
+// Element IDs
 const ID_DISPLAY = "display";
 const ID_TITLEBAR = "title";
 
-function fillChars(text = "", length = 0, char = "0", direction = 0) {
-	text = text.toString();
+const ID = {
+	// Display
+	DISPLAY: "display",
 
-	let filler = "";
-	for (let i = 0; i < Math.max(0, length - text.length); i++) filler += char;
+	TOP_PANE: "top-pane",
+	MIDDLE_PANE: "middle-pnae",
+	BOTTOM_PANE: "bottom-pane",
 
-	return (direction == 0 ? filler : "") + text + (direction == 1 ? filler : "");
+	SHOW_DIFF: "show-diff",
+
+	// Control Bar
+	CONTROL_BAR: "controlbar",
+
+	TITLE_BAR: "title",
+
+	HIDE_BUTTON: "btn-hide",
+	EXPAND_BUTTON: "btn-expand",
+	SHRINK_BUTTON: "btn-shrink",
+
+	// On-Display Control Bar
+	ON_DISPLAY_CONTROL_BAR: "ondisplay-controlbar",
+	SHOW_BUTTON: "btn-show",
+};
+
+// Flag etc. 
+var ref_point;
+var interval;
+var show_days = false;
+
+// Display
+var display;
+
+var topPane;
+var middlePane;
+var bottomPane;
+
+var showDiff;
+
+// Control Bar
+var controlBar;
+var hideBtn;
+var expandBtn;
+var shrinkBtn;
+
+// On-Display Control Bar
+var onDisplayControlBar;
+var showBtn;
+
+// Functions
+function saveRefPoint(date) {
+	localStorage.setItem(KEY_REF, date.toString());
+	initialiseTimer();
 }
 
-function timeToText(milliseconds) {
-	let d_seconds = milliseconds % Unit.MINUTE;
-	let d_minutes = (milliseconds - d_seconds) % Unit.HOUR;
-	let d_hours = (milliseconds - d_seconds - d_minutes) % Unit.DAY;
-	let d_days = (milliseconds - d_seconds - d_minutes - d_hours);
-
-	let t_seconds = `${fillChars(Math.floor(d_seconds / Unit.SECOND), 2, "0")}<span class="small-font">s</span>`;
-	let t_minutes = `${fillChars(d_minutes / Unit.MINUTE, 2, "0")}<span class="small-font">m</span>`;
-	let t_hours = `${fillChars(d_hours / Unit.HOUR, 2, "0")}<span class="small-font">h</span>`;
-	let t_days = `${fillChars(d_days / Unit.DAY, 3, "0")}<span class="small-font">day<span style="opacity: ${d_days / Unit.DAY > 1 ? 1 : 0}">s</span></span>`;
-
-	return (show_days ? t_days : "") + `${t_hours}${t_minutes}${t_seconds}`;
+function loadRefPoint() {
+	return localStorage.getItem(KEY_REF);
 }
 
-async function takesScreenshot(target = document.documentElement, width = window.innerWidth, height = window.innerHeight){
+function syncTheTime() {
 	let now = new Date();
+	let diff = now - ref_point;
 
-	let canvas = await domToCanvas(target, width, height);
-	downloadByURL(canvas.toDataURL("image/png"), `screenshot_${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}.png`);
+	showDiff.innerHTML = timeToText(diff);
 }
 
-async function domToCanvas(dom, width = 1920, height = 1080){
-	let result;
+function initialiseTimer() {
+	clearInterval(interval);
 
-	await html2canvas(dom, {
-		windowWidth: width,
-		windowHeight: height,
-		width: width,
-		height: height,
-		scale: 1,
-	}).then(canvas => {
-		result = canvas;
-	});
+	let ref = loadRefPoint();
+	ref_point = ref == null ? new Date() : new Date(ref);
+	if (ref == null) {
+		saveRefPoint(ref_point);
+	}
 
-	return result;
+	inteval = setInterval(syncTheTime, 500);
 }
 
-function downloadByURL(url, filename = "undefined"){
-	let anchor = document.createElement("a");
-	anchor.href = url;
-	anchor.download = filename;
-	anchor.click();
-	anchor.remove();
+function toggleShowingDays() {
+	show_days = !show_days;
 }

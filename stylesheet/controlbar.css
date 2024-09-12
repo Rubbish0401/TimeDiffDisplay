@@ -1,0 +1,95 @@
+/* Control Bar */
+#controlbar {
+	width: calc(100% - 8px);
+	height: 56px;
+	position: fixed;
+
+	padding: 4px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	background: #E0A0A0;
+
+	transition: top 0.5s ease-out;
+}
+
+#controlbar.hide{
+	top: -64px;
+}
+
+#controlbar.show{
+	top: 0;
+}
+
+#controlbar > div{
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#controlbar > div:nth-child(2){
+	flex-direction: row-reverse;
+}
+
+#controlbar > div:nth-child(2) > *{
+	width: auto;
+	height: 100%;
+}
+
+#controlbar > div > *{
+	width: fit-content;
+}
+
+#anchor-title{
+	width: max-content;
+	height: fit-content;
+
+	user-select: none;
+}
+
+#anchor-title > *{
+	width: auto;
+	height: fit-content;
+
+	font-size: 40px;
+	font-family: "Open Sans";
+	font-weight: 400;
+	color: #000000;
+}
+
+/* On-Display Control Bar */
+#ondisplay-controlbar{
+	width: calc(100% - 8px);
+	height: 56px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	padding: 4px;
+
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	align-items: center;
+
+	transition: opacity 0.5s ease-out;
+}
+
+#ondisplay-controlbar.hide{
+	opacity: 0;
+}
+
+#ondisplay-controlbar.show{
+	opacity: 1;
+}
+
+#ondisplay-controlbar > *{
+	width: fit-content;
+	height: 100%;
+}
