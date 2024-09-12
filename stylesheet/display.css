@@ -3,18 +3,33 @@
 	height: 100%;
 
 	display: block;
+
+	user-select: none;
 }
 
 #display > *{
 	width: 100%;
 }
 
+#display > #top-pane,#bottom-pane{
+	width: calc(100% - 32px);
+	height: calc(20% - 32px);
+
+	padding: 16px;
+}
+
+#display > #top-pane,#bottom-pane > span{
+	font-size: calc(10vw / 3);
+}
+
 #display > #top-pane{
-	height: 10%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
 }
 
 #display > #middle-pane{
-	height: 80%;
+	height: 60%;
 
 	display: flex;
 
@@ -23,17 +38,16 @@
 }
 
 #display > #bottom-pane{
-	height: 10%;;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
 }
 
 #show-diff{
 	width: fit-content;
 	height: fit-content;
 
-	font-size: calc(100vw/6);
-	font-family: "Open Sans";
-
-	user-select: none;
+	font-size: calc(50vw / 3);
 }
 
 .small-font {

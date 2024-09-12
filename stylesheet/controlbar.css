@@ -10,8 +10,6 @@
 	flex-direction: row;
 	align-items: center;
 
-	background: #E0A0A0;
-
 	transition: top 0.5s ease-out;
 }
 
@@ -38,7 +36,7 @@
 
 #controlbar > div:nth-child(2) > *{
 	width: auto;
-	height: 100%;
+	height: 80%;
 }
 
 #controlbar > div > *{
@@ -91,5 +89,5 @@
 
 #ondisplay-controlbar > *{
 	width: fit-content;
-	height: 100%;
+	height: 80%;
 }

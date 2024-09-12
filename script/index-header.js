@@ -12,7 +12,9 @@ const ID = {
 	MIDDLE_PANE: "middle-pnae",
 	BOTTOM_PANE: "bottom-pane",
 
+	SHOW_START: "show-start",
 	SHOW_DIFF: "show-diff",
+	SHOW_END: "show-end",
 
 	// Control Bar
 	CONTROL_BAR: "controlbar",
@@ -28,10 +30,12 @@ const ID = {
 	SHOW_BUTTON: "btn-show",
 };
 
-// Flag etc. 
+// Variables
 var ref_point;
 var interval;
 var show_days = false;
+
+var themeHue = 0; // 0 to 255 int
 
 // Display
 var display;
@@ -40,7 +44,9 @@ var topPane;
 var middlePane;
 var bottomPane;
 
+var showStart;
 var showDiff;
+var showEnd;
 
 // Control Bar
 var controlBar;
@@ -54,19 +60,31 @@ var showBtn;
 
 // Functions
 function saveRefPoint(date) {
-	localStorage.setItem(KEY_REF, date.toString());
+	let obj = {
+		refPoint: date.toString(),
+		goalPoint: null,
+		diff: null,
+	}
+
+	localStorage.setItem(KEY_REF, JSON.stringify(obj));
 	initialiseTimer();
 }
 
 function loadRefPoint() {
-	return localStorage.getItem(KEY_REF);
+	let item = localStorage.getItem(KEY_REF);
+
+	return item ? JSON.parse(item).refPoint : item;
 }
 
 function syncTheTime() {
 	let now = new Date();
-	let diff = now - ref_point;
+	let diff = ref_point - now;
+	let sign = Math.sign(diff);
 
-	showDiff.innerHTML = timeToText(diff);
+	showStart.innerHTML = `${formatDateToText(sign >= 0 ? now : ref_point)} から` ;
+	showEnd.innerHTML = `${formatDateToText(sign >= 0 ? ref_point : now)} まで` ;
+
+	showDiff.innerHTML = timeToText(Math.abs(diff));
 }
 
 function initialiseTimer() {
@@ -78,9 +96,21 @@ function initialiseTimer() {
 		saveRefPoint(ref_point);
 	}
 
-	inteval = setInterval(syncTheTime, 500);
+	inteval = setInterval(syncTheTime, 200);
 }
 
 function toggleShowingDays() {
 	show_days = !show_days;
+}
+
+function hueToThemeColours(hue){
+	return {
+		Primary: `hsl(${hue}, 75%, 60%)`,
+		PrimaryLight: `hsl(${hue}, 60%, 75%)`,
+		PrimaryDark: `hsl(${hue}, 60%, 40%)`,
+
+		Secondary: `hsl(${(128 + hue) % 256}, 75%, 60%)`,
+		SecondaryLight: `hsl(${(128 + hue) % 256}, 60%, 75%)`,
+		SecondaryDark: `hsl(${(128 + hue) % 256}, 60%, 40%)`,
+	};
 }
