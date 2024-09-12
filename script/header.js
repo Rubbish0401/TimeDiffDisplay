@@ -21,11 +21,10 @@ function fillChars(text = "", length = 0, char = "0", direction = 0) {
 }
 
 function formatDateToText(date){
-	
-
 	return `${date.getFullYear()}年 ` +
 	`${fillChars(String(date.getMonth() + 1), 2, "0")}月` +
 	`${fillChars(String(date.getDate()), 2, "0")}日 ` +
+	(window.innerWidth > 960 ? "" : "<br>") +
 	`${fillChars(String(date.getHours()), 2, "0")}:${fillChars(String(date.getMinutes()), 2, "0")}:${fillChars(String(date.getSeconds()), 2, "0")}`;
 }
 
