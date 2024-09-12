@@ -100,7 +100,30 @@
 		</div>
 	</div>
 
+	<div id="splash">
+		<div>
+			<img id="splash-icon" src="images/png/rounded_paper.png">
+			<p id="splash-text">
+				ゴミ
+			</p>
+		</div>
+	</div>
+
 	<script src="script/index.js"></script>
+	<script>
+		setTimeout(function(){
+			let spl = document.getElementById("splash");
+			spl.children[0].classList.add("hide");
+
+			setTimeout(function(){
+				document.getElementById("splash").classList.add("hide");
+
+				setTimeout(function(){
+					document.getElementById("splash").style.display = "none";
+				}, 1000);
+			}, 1000);
+		}, 1000);
+	</script>
 </body>
 
 </html>

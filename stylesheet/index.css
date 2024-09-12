@@ -46,3 +46,70 @@ a {
 
 	background: #FFFFFF;
 }
+
+/* Splash Screen */
+#splash{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	opacity: 1;
+	background: #FFFFFF;
+
+	transition: opacity 1s ease-in;
+
+	user-select: none;
+}
+
+#splash.hide{
+	opacity: 0;
+}
+
+#splash > div{
+	width: fit-content;
+	height: fit-content;
+
+	display: block;
+	text-align: center;
+
+	opacity: 1;
+
+	transition: opacity 1s ease-in;
+}
+
+#splash > div.hide{
+	opacity: 0;
+}
+
+#splash-icon{
+	width: 500px;
+	height: auto;
+}
+
+#splash-text{
+	margin: 0;
+	padding: 0;
+
+	font-size: 128px;
+	font-family: "メイリオ";
+	font-weight: bolder;
+
+	color: #6666ff;
+}
+
+@media screen and (max-width: 960px) {
+	#splash-icon{
+		width: 250px;
+	}
+	
+	#splash-text{
+		font-size: 64px;
+	}
+}

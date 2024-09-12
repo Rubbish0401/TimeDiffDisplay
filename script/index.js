@@ -1,9 +1,6 @@
 // Initialise
 
 (function () {
-	// Theme
-	let colours = hueToThemeColours(themeHue);
-
 	// Get Elements
 
 		// Display
@@ -30,10 +27,28 @@
 	// Set Properties and Functions
 
 		// Display
+		let touchEnd = function(){
+			touchingTime = 0;
+			clearInterval(touchInterval);
+		};
+
+		let touchStart = function(){
+			touchInterval = setInterval(() => {
+				touchingTime++;
+
+				if(touchingTime >= 15){
+					takesScreenshot();
+					touchEnd();
+				}
+			}, 100);
+		};
+
+		display.addEventListener("mousedown", touchStart);
+		display.addEventListener("mouseup", touchEnd);
+		display.addEventListener("touchstart", touchStart);
+		display.addEventListener("touchend", touchEnd);
 
 		//Control Bar
-		controlBar.style.background = colours.PrimaryLight;
-
 		hideBtn.addEventListener("click", function (event) {
 			controlBar.classList.add("hide");
 			controlBar.classList.remove("show");
@@ -71,21 +86,14 @@
 			controlBar.classList.remove("hide");
 		});
 
-		for(child of onDisplayControlBar.children){
-			if(child.tagName.toLowerCase() == "svg") for(_child of child.children) if(_child.tagName.toLowerCase() == "path"){
-				_child.style.fill = colours.Primary;
-			}
-		}
-
 
 	// Other Functions
-
 	document.addEventListener("fullscreenchange", function (event) {
 		expandBtn.style.display = this.fullscreenElement ? "none" : "initial";
 		shrinkBtn.style.display = this.fullscreenElement ? "initial" : "none";
 	});
 
 	// Initialise
-	document.getElementById(ID.TITLE_BAR).innerHTML = `Time <span style='color: ${colours.Primary}'>D</span>iff`;
+	applyTheme(themeHue);
 	initialiseTimer();
 })();

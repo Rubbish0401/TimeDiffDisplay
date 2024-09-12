@@ -37,6 +37,9 @@ var show_days = false;
 
 var themeHue = 0; // 0 to 255 int
 
+var touchInterval;
+var touchingTime = 0;
+
 // Display
 var display;
 
@@ -104,13 +107,31 @@ function toggleShowingDays() {
 }
 
 function hueToThemeColours(hue){
+	let secHue = (hue + 180) % 256;
+	
 	return {
 		Primary: `hsl(${hue}, 75%, 60%)`,
+		PrimaryVivid: `hsl(${hue}, 80%, 50%)`,
 		PrimaryLight: `hsl(${hue}, 60%, 75%)`,
 		PrimaryDark: `hsl(${hue}, 60%, 40%)`,
 
-		Secondary: `hsl(${(128 + hue) % 256}, 75%, 60%)`,
-		SecondaryLight: `hsl(${(128 + hue) % 256}, 60%, 75%)`,
-		SecondaryDark: `hsl(${(128 + hue) % 256}, 60%, 40%)`,
+		Secondary: `hsl(${secHue}, 75%, 60%)`,
+		SecondaryVivid: `hsl(${secHue}, 80%, 50%)`,
+		SecondaryLight: `hsl(${secHue}, 60%, 75%)`,
+		SecondaryDark: `hsl(${secHue}, 60%, 40%)`,
 	};
+}
+
+function applyTheme(hue){
+	let colours = hueToThemeColours(hue);
+
+	controlBar.style.background = colours.PrimaryLight;
+
+	for(child of onDisplayControlBar.children){
+		if(child.tagName.toLowerCase() == "svg") for(_child of child.children) if(_child.tagName.toLowerCase() == "path"){
+			_child.style.fill = colours.PrimaryDark;
+		}
+	}
+
+	document.getElementById(ID.TITLE_BAR).innerHTML = `Time <span style='color: ${colours.PrimaryDark}'>D</span>iff`;
 }
