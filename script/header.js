@@ -42,11 +42,13 @@ function timeToText(milliseconds) {
 	return (show_days ? t_days : "") + `${t_hours}${t_minutes}${t_seconds}`;
 }
 
-async function takesScreenshot(target = document.documentElement, width = window.innerWidth, height = window.innerHeight){
+async function takesScreenshot(target = document.documentElement, width = window.innerWidth, height = window.innerHeight, download = false){
 	let now = new Date();
 
 	let canvas = await domToCanvas(target, width, height);
-	downloadByURL(canvas.toDataURL("image/png"), `screenshot_${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}.png`);
+	if(download) downloadByURL(canvas.toDataURL("image/png"), `screenshot_${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}.png`);
+
+	return canvas;
 }
 
 async function domToCanvas(dom, width = 1920, height = 1080){
@@ -73,7 +75,7 @@ function downloadByURL(url, filename = "undefined"){
 	anchor.remove();
 }
 
-function makeFullscreen(target, toggle){
+function makeFullscreen(target = document.documentElement, toggle){
 	if(toggle == null) toggle = document.fullscreenElement !== null;
 	
 	if(toggle){

@@ -24,10 +24,18 @@ const ID = {
 	HIDE_BUTTON: "btn-hide",
 	EXPAND_BUTTON: "btn-expand",
 	SHRINK_BUTTON: "btn-shrink",
+	EDIT_BUTTON: "btn-edit",
+	SHARE_BUTTON: "btn-share",
 
 	// On-Display Control Bar
 	ON_DISPLAY_CONTROL_BAR: "ondisplay-controlbar",
 	SHOW_BUTTON: "btn-show",
+
+	// Sharing Dialogue
+	SHARE_DIALOGUE: "dialogue-share",
+
+	// Editing Dialogue
+	EDIT_DIALOGUE: "dialogue-edit"
 };
 
 // Variables
@@ -56,10 +64,18 @@ var controlBar;
 var hideBtn;
 var expandBtn;
 var shrinkBtn;
+var editBtn;
+var shareBtn;
 
 // On-Display Control Bar
 var onDisplayControlBar;
 var showBtn;
+
+// Sharing Dialogue
+var shareDialogue;
+
+// Editing Dialgue
+var editDialogue;
 
 // Functions
 function saveRefPoint(date) {

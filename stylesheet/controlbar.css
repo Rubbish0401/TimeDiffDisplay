@@ -34,9 +34,27 @@
 	flex-direction: row-reverse;
 }
 
-#controlbar > div:nth-child(2) > *{
-	width: auto;
-	height: 80%;
+#btn-expand, #btn-shrink, #btn-hide, #btn-share{
+	width: 44.8px;
+	height: 44.8px;
+
+	box-sizing: border-box;
+}
+
+#btn-expand{
+	padding: 4px;
+}
+
+#btn-expand:hover{
+	padding: 0px;
+}
+
+#btn-shrink{
+	padding: 0px;
+}
+
+#btn-shrink:hover{
+	padding: 4px;
 }
 
 #controlbar > div > *{
