@@ -93,35 +93,10 @@
 			});
 		});
 
-		let sizeBtns = document.getElementsByClassName("btn-size");
-		for(sizeBtn of sizeBtns){
-			sizeBtn.addEventListener("click", async function(event){
-				let label = event.target.innerText;
-				let isCurrent = label == "current";
-
-				let width = isCurrent ? void 0 : Number(label.split(" × ")[0]) , height = isCurrent ? void 0 : Number(label.split(" × ")[1]) ;
-
-				let canvas = await takesScreenshot(display, width, height);
-				canvas.toBlob(blob => {
-					let url = URL.createObjectURL(blob);
-					document.getElementById("preview").src = url;
-				});
-			});
-		}
-
-		document.getElementById("share-download").addEventListener("click", function(event){
-			let now = new Date();
-			let filename = "screenshot_" + [
-				fillChars(String(now.getFullYear()), 4, "0"),
-				fillChars(String(now.getMonth() + 1), 2, "0"),
-				fillChars(String(now.getDate()), 2, "0"),
-				fillChars(String(now.getHours()), 2, "0"),
-				fillChars(String(now.getMinutes()), 2, "0"),
-				fillChars(String(now.getSeconds()), 2, "0"),
-				fillChars(String(now.getMilliseconds()), 3, "0"),
-			].join("") + ".png";
-
-			downloadByURL(document.getElementById("preview").src, filename);
+		document.getElementById("btn-reset").addEventListener("click", function(event){
+			saveRefPoint(new Date());
+			
+			initialiseTimer();
 		});
 
 		// On-Display Control Bar
@@ -158,6 +133,37 @@
 
 		shareDialogue.children[0].addEventListener("click", function(event){
 			event.stopPropagation();
+		});
+
+		let sizeBtns = document.getElementsByClassName("btn-size");
+		for(sizeBtn of sizeBtns){
+			sizeBtn.addEventListener("click", async function(event){
+				let label = event.target.innerText;
+				let isCurrent = label == "current";
+
+				let width = isCurrent ? void 0 : Number(label.split(" × ")[0]) , height = isCurrent ? void 0 : Number(label.split(" × ")[1]) ;
+
+				let canvas = await takesScreenshot(display, width, height);
+				canvas.toBlob(blob => {
+					let url = URL.createObjectURL(blob);
+					document.getElementById("preview").src = url;
+				});
+			});
+		}
+
+		document.getElementById("share-download").addEventListener("click", function(event){
+			let now = new Date();
+			let filename = "screenshot_" + [
+				fillChars(String(now.getFullYear()), 4, "0"),
+				fillChars(String(now.getMonth() + 1), 2, "0"),
+				fillChars(String(now.getDate()), 2, "0"),
+				fillChars(String(now.getHours()), 2, "0"),
+				fillChars(String(now.getMinutes()), 2, "0"),
+				fillChars(String(now.getSeconds()), 2, "0"),
+				fillChars(String(now.getMilliseconds()), 3, "0"),
+			].join("") + ".png";
+
+			downloadByURL(document.getElementById("preview").src, filename);
 		});
 
 	// Other Functions

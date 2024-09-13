@@ -34,7 +34,7 @@
 	flex-direction: row-reverse;
 }
 
-#btn-expand, #btn-shrink, #btn-hide, #btn-share{
+#btn-expand, #btn-shrink, #btn-hide, #btn-share, #btn-reset{
 	width: 44.8px;
 	height: 44.8px;
 
