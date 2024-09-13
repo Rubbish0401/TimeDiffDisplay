@@ -68,6 +68,13 @@
 	}
 
 	#display > #top-pane,#bottom-pane > span{
-		font-size: calc(20vw / 3);
+		font-size: calc(20vmin / 3);
+	}
+}
+
+@media screen and (max-width: 720px){
+	#display > #top-pane,#bottom-pane > span{
+		inline-size: calc(54vmin);
+		overflow-wrap: break-word;
 	}
 }
