@@ -48,6 +48,8 @@ var themeHue = 0; // 0 to 255 int
 var touchInterval;
 var touchingTime = 0;
 
+var shareFile;
+
 // Display
 var display;
 

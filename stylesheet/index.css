@@ -68,7 +68,7 @@ a {
 }
 
 #splash-icon{
-	width: 500px;
+	width: 400px;
 	height: auto;
 }
 
@@ -96,7 +96,7 @@ a {
 
 @media screen and (max-width: 960px) {
 	#splash-icon{
-		width: 250px;
+		width: 200px;
 	}
 	
 	#splash-text{

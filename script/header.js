@@ -66,6 +66,17 @@ async function domToCanvas(dom, width = 1920, height = 1080){
 	return result;
 }
 
+async function canvasToFile(canvas){
+	let file;
+	canvas.toBlob(blob => {
+		file = new File([blob], "", {
+			type: blob.type,
+		})
+	});
+
+	return file;
+}
+
 function downloadByURL(url, filename = "undefined"){
 	let anchor = document.createElement("a");
 	anchor.href = url;
@@ -86,4 +97,14 @@ function makeFullscreen(target = document.documentElement, toggle){
 	}else{
 		document.exitFullscreen();
 	}
+}
+
+/* Share */
+async function share(title, text, url, files){
+	await navigator.share({
+		title: title,
+		text: text,
+		url: url,
+		files: files,
+	});
 }
