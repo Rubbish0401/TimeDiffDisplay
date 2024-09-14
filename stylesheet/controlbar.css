@@ -34,15 +34,21 @@
 	flex-direction: row-reverse;
 }
 
-#btn-expand, #btn-shrink, #btn-hide, #btn-share, #btn-reset{
+.control-btn{
 	width: 44.8px;
 	height: 44.8px;
 
 	box-sizing: border-box;
+	border-radius: 50%;
+}
+
+.control-btn:hover{
+	background: #80808040;	
 }
 
 #btn-expand{
 	padding: 4px;
+	background: transparent;
 }
 
 #btn-expand:hover{
@@ -51,6 +57,7 @@
 
 #btn-shrink{
 	padding: 0px;
+	background: transparent;
 }
 
 #btn-shrink:hover{
@@ -104,7 +111,13 @@
 	opacity: 1;
 }
 
-#ondisplay-controlbar > *{
+.ondisplay-btn{
 	width: fit-content;
 	height: 80%;
+
+	border-radius: 50%;
+}
+
+.ondisplay-btn:hover{
+	background: #80808040;
 }
