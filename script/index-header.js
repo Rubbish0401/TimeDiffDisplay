@@ -42,7 +42,6 @@ const ID = {
 // Variables
 var ref_point;
 var interval;
-var show_days = false;
 
 var themeHue = 0; // 0 to 255 int
 
@@ -126,7 +125,11 @@ function initialiseTimer() {
 }
 
 function toggleShowingDays() {
-	show_days = !show_days;
+	if(middlePane.classList.contains("show-whole")){
+		middlePane.classList.remove("show-whole");
+	}else{
+		middlePane.classList.add("show-whole");
+	}
 }
 
 function hueToThemeColours(hue){

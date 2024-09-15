@@ -50,12 +50,7 @@
 				touchingTime++;
 
 				if (touchingTime >= 5) {
-					if(middlePane.classList.contains("show-whole")){
-						middlePane.classList.remove("show-whole");
-					}else{
-						middlePane.classList.add("show-whole");
-					}
-
+					toggleShowingDays();
 					touchEnd();
 				}
 			}, 100);
