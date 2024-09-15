@@ -9,7 +9,7 @@ const ID = {
 	DISPLAY: "display",
 
 	TOP_PANE: "top-pane",
-	MIDDLE_PANE: "middle-pnae",
+	MIDDLE_PANE: "middle-pane",
 	BOTTOM_PANE: "bottom-pane",
 
 	SHOW_START: "show-start",
@@ -102,10 +102,13 @@ function syncTheTime() {
 	let diff = ref_point - now;
 	let sign = Math.sign(diff);
 
+	let timeText = timeToText(Math.abs(diff));
+
 	showStart.innerHTML = `${formatDateToText(sign >= 0 ? now : ref_point)} から` ;
 	showEnd.innerHTML = `${formatDateToText(sign >= 0 ? ref_point : now)} まで` ;
 
-	showDiff.innerHTML = timeToText(Math.abs(diff));
+	document.getElementById("show-days").innerHTML = timeText.days.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
+	document.getElementById("show-time").innerHTML = timeText.time.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
 }
 
 function initialiseTimer() {

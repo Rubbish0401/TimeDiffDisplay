@@ -27,18 +27,34 @@ function formatDateToText(date){
 	`${fillChars(String(date.getHours()), 2, "0")}:${fillChars(String(date.getMinutes()), 2, "0")}:${fillChars(String(date.getSeconds()), 2, "0")}`;
 }
 
+function formatTime(milliseconds){
+	let d_days = Math.floor(milliseconds / Unit.DAY);
+	let d_hours = Math.floor((milliseconds % Unit.DAY) / Unit.HOUR);
+	let d_minutes = Math.floor((milliseconds % Unit.HOUR) / Unit.MINUTE);
+	let d_seconds = Math.floor((milliseconds % Unit.MINUTE) / Unit.SECOND);
+	let d_milliseconds = milliseconds % Unit.SECOND;
+
+	return {
+		milliseconds: d_milliseconds,
+		seconds: d_seconds,
+		minutes: d_minutes,
+		hours: d_hours,
+		days: d_days,
+	};
+}
+
 function timeToText(milliseconds) {
-	let d_seconds = milliseconds % Unit.MINUTE;
-	let d_minutes = (milliseconds - d_seconds) % Unit.HOUR;
-	let d_hours = (milliseconds - d_seconds - d_minutes) % Unit.DAY;
-	let d_days = (milliseconds - d_seconds - d_minutes - d_hours);
+	let time = formatTime(milliseconds);
 
-	let t_seconds = `${fillChars(Math.floor(d_seconds / Unit.SECOND), 2, "0")}<span class="small-font">s</span>`;
-	let t_minutes = `${fillChars(d_minutes / Unit.MINUTE, 2, "0")}<span class="small-font">m</span>`;
-	let t_hours = `${fillChars(d_hours / Unit.HOUR, 2, "0")}<span class="small-font">h</span>`;
-	let t_days = `${fillChars(d_days / Unit.DAY, 3, "0")}<span class="small-font">day<span style="opacity: ${d_days / Unit.DAY > 1 ? 1 : 0}">s</span></span>`;
+	let t_seconds = `${fillChars(time.seconds, 2, "0")}s`;
+	let t_minutes = `${fillChars(time.minutes, 2, "0")}m`;
+	let t_hours = `${fillChars(time.hours, 2, "0")}h`;
+	let t_days = `${fillChars(time.days, 3, "0")}day${time.days > 1 ? "s" : ""}`;
 
-	return (show_days ? t_days : "") + `${t_hours}${t_minutes}${t_seconds}`;
+	return {
+		days: t_days,
+		time: `${t_hours}${t_minutes}${t_seconds}`,
+	};
 }
 
 async function takesScreenshot(target = document.documentElement, width = window.innerWidth, height = window.innerHeight, download = false){

@@ -11,47 +11,75 @@
 	width: 100%;
 }
 
-#display > #top-pane,#bottom-pane{
+#top-pane,#bottom-pane{
 	width: calc(100% - 32px);
 	height: calc(20% - 32px);
 
 	padding: 16px;
 }
 
-#display > #top-pane,#bottom-pane > span{
+#top-pane,#bottom-pane > span{
 	font-size: calc(10vw / 3);
 }
 
-#display > #top-pane{
+#top-pane{
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-end;
 }
 
-#display > #middle-pane{
+#middle-pane{
+	width: 200%;
 	height: 60%;
 
 	display: flex;
-
+	flex-flow: row nowrap;
 	justify-content: center;
 	align-items: center;
+
+	transform: translateX(-50%);
 }
 
-#display > #bottom-pane{
+#middle-pane.show-whole{
+	width: 100%;
+
+	transform: translate(0);
+}
+
+#middle-pane.show-whole > .show-page{
+	width: fit-content;
+	
+	padding: 0 8px;
+}
+
+#middle-pane.show-whole > .show-page > span{
+	font-size: 13vw;
+}
+
+#bottom-pane{
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-start;
 }
 
-#display > #bottom-pane > span{
+#bottom-pane > span{
 	text-align: right;
 }
 
-#show-diff{
+.show-page{
+	width: 50%;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 18vw;
+}
+
+.show-page > span{
 	width: fit-content;
 	height: fit-content;
-
-	font-size: calc(50vw / 3);
 }
 
 .small-font {

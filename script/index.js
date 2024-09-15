@@ -36,29 +36,35 @@
 
 	// Display
 	let touchEnd = function () {
-		touchingTime = 0;
-		clearInterval(touchInterval);
+		if(touchInterval != null){
+			clearInterval(touchInterval);
+			touchInterval = null;
+			touchingTime = 0;
+		}
 	};
 
-	let touchStart = function () {
+	let touchStart = function (event) {
 		if (!touchInterval) {
 			touchInterval = setInterval(() => {
 				touchingTime++;
 
-				if (touchingTime >= 15) {
-					takesScreenshot(void 0, void 0, void 0, true);
+				if (touchingTime >= 5) {
+					if(middlePane.classList.contains("show-whole")){
+						middlePane.classList.remove("show-whole");
+					}else{
+						middlePane.classList.add("show-whole");
+					}
+
 					touchEnd();
 				}
 			}, 100);
 		}
 	};
 
-	/*
 	display.addEventListener("mousedown", touchStart);
 	display.addEventListener("mouseup", touchEnd);
 	display.addEventListener("touchstart", touchStart);
 	display.addEventListener("touchend", touchEnd);
-	*/
 
 	//Control Bar
 	hideBtn.addEventListener("click", function (event) {
@@ -80,7 +86,7 @@
 		expandBtn.style.display = "none";
 	}
 
-	editBtn.style.display = "none";
+	//editBtn.style.display = "none";
 	editBtn.addEventListener("click", function (event) {
 		editDialogue.showModal();
 	});
