@@ -13,7 +13,8 @@ const ID = {
 	BOTTOM_PANE: "bottom-pane",
 
 	SHOW_START: "show-start",
-	SHOW_DIFF: "show-diff",
+	SHOW_DIFF_DAYS: "show-diff-days",
+	SHOW_DIFF_TIME: "show-diff-time",
 	SHOW_END: "show-end",
 
 	// Control Bar
@@ -58,7 +59,8 @@ var middlePane;
 var bottomPane;
 
 var showStart;
-var showDiff;
+var showDiffDays;
+var showDiffTime;
 var showEnd;
 
 // Control Bar
@@ -107,8 +109,8 @@ function syncTheTime() {
 	showStart.innerHTML = `${formatDateToText(sign >= 0 ? now : ref_point)} から` ;
 	showEnd.innerHTML = `${formatDateToText(sign >= 0 ? ref_point : now)} まで` ;
 
-	document.getElementById("show-days").innerHTML = timeText.days.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
-	document.getElementById("show-time").innerHTML = timeText.time.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
+	showDiffDays.innerHTML = timeText.days.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
+	showDiffTime.innerHTML = timeText.time.replace(/[a-z]+/g, match => `<span class="small-font">${match}</span>`);
 }
 
 function initialiseTimer() {

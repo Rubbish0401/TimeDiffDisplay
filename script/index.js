@@ -11,7 +11,8 @@
 	bottomPane = document.getElementById(ID.BOTTOM_PANE);
 
 	showStart = document.getElementById(ID.SHOW_START);
-	showDiff = document.getElementById(ID.SHOW_DIFF);
+	showDiffDays = document.getElementById(ID.SHOW_DIFF_DAYS);
+	showDiffTime = document.getElementById(ID.SHOW_DIFF_TIME);
 	showEnd = document.getElementById(ID.SHOW_END);
 
 	// Control Bar
