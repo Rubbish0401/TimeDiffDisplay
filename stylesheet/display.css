@@ -49,7 +49,7 @@
 #middle-pane.show-whole > .show-page{
 	width: fit-content;
 	
-	padding: 0 8px;
+	padding: 0 1vw;
 }
 
 #middle-pane.show-whole > .show-page > span{
